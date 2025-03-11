@@ -1,0 +1,9 @@
+name: name-scrapper-crowdstrike
+channels:
+  - conda-forge
+dependencies:
+  - python>=3.12.8
+  - pip>=25.0
+  - pip:
+      - -r ./requirements.txt
+      - -r ./requirements-dev.txt

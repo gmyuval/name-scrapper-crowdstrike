@@ -1,0 +1,73 @@
+[project]
+name = "name-scrapper-crowdstrike"
+version = "0.0.1"
+authors = [
+    {name = "Yuval Moran", email = "yuvalg@gmail.com"},
+]
+requires-python = ">3.12"
+
+dependencies = [
+    "aiohttp",
+    "requests",
+    "beautifulsoup4",
+    "pydantic"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pip-tools",
+    "pylint",
+    "black",
+    "isort",
+    "pre-commit",
+    "mypy",
+    "pytest",
+    "pytest-asyncio",
+    "pytest-cov",
+]
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["app"]
+
+[tool.black]
+line-length = 150
+target-version = ["py312"]
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.venv
+  | \build
+  | \.toml
+  | DockerFile
+  | dist
+)/
+'''
+preview = true
+
+[tool.isort]
+profile = "black"  # Ensure compatibility with Black's formatting
+line_length = 150   # Match Black's line length
+include_trailing_comma = true
+multi_line_output = 3
+known_first_party = ["app"]  # Treat 'app' as a first-party module
+known_third_party = []
+default_section = "THIRDPARTY"
+force_grid_wrap = 0
+combine_as_imports = true
+
+[tool.mypy]
+files = ["app"]
+exclude = ["hook.py$"]
+python_version = 3.12
+strict = true
+disallow_untyped_defs = false
+warn_unused_ignores = false
+
+[tool.pytest.ini_options]
+asyncio_default_fixture_loop_scope = "session"

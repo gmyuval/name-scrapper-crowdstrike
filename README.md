@@ -7,11 +7,11 @@ The app scrapes the following Wikipedia page: https://en.wikipedia.org/wiki/List
 1. Create and activate the conda environment:
    ```
    conda env create -f environment.yml
-   conda activate animal_names_env
+   conda activate name-scrapper-crowdstrike
    ```
 2. Run the main program:
    ```
-   python -m src.main
+   python -m app.main
    ````
 
 ## Running tests
